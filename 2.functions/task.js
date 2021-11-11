@@ -23,20 +23,24 @@ function getArrayParams(arr) {
 
 // Задание 2
 function worker(arr) {
-  let sum;
+  let sum = 0;
 
-  // Ваш код
-
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
   return sum;
 }
 
 function makeWork(arrOfArr, func) {
-  let max;
+  let max = -Infinity;
+  let result;
 
-  // Ваш кода
-  // for ...
-  
-  return max;
+  for (let i = 0; i < arrOfArr.length; i++) {
+    result = func(arrOfArr[i]);
+    if (result > max) {
+      max = result;
+    }
+  } return max;
 }
 
 // Задание 3
