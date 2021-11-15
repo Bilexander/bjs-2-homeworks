@@ -10,9 +10,9 @@ function compareArrays(arr1, arr2) {
 }
 
 function advancedFilter(arr) {
-  let resultArr;
 
-  // Ваш код
+  // Задание 2
+  let resultArr = arr.filter((number) => number > 0 && number % 3 === 0).map((number) => number * 10);
 
   return resultArr; // array
 }
