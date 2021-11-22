@@ -94,3 +94,48 @@ class Library {
     }
      
 }
+
+// Задача 3*
+class Student {
+    #journal;
+    constructor(fullName) {
+        this.name = fullName;
+        this.#journal = {};
+    }
+  
+    getName() {
+        return this.name;
+    }
+    
+    addMark(grade, subject) {
+        if ((grade < 1) || (grade > 5) || (typeof grade !== "number")) {
+            return console.log(`Ошибка, оценка должна быть числом от 1 до 5`);
+        }
+        if (this.#journal[subject] === undefined) {
+            this.#journal[subject] = [];
+        }
+        return this.#journal[subject].push(grade);
+    }   
+    
+    getAverageBySubject(subject) {
+        let averageMark = 0;
+        if (this.#journal[subject] !== undefined) {
+            if (this.#journal[subject].length > 0) {
+                let sum = 0;
+                this.#journal[subject].forEach((mark) => {sum += mark});
+                averageMark = sum / this.#journal[subject].length;
+            }
+        }
+        return averageMark;
+    }
+    
+    getAverage() {
+        let sumOfAveMarks = 0;
+        let countOfSubjects = 0;
+        Object.entries(this.#journal).forEach(([subject]) => {
+            sumOfAveMarks += this.getAverageBySubject(subject);
+            countOfSubjects++;
+        });
+        return sumOfAveMarks / countOfSubjects;
+    }
+}
