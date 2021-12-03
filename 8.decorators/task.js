@@ -45,6 +45,12 @@ function debounceDecoratorNew(func, ms) {
   return wrapper;
 }
 
-function debounceDecorator2(func) {
-  // Ваш код
+// Задача 3
+function debounceDecorator2(debounceDecoratorNew) {
+  let count = 0;
+  function wrapper(...rest) {
+    wrapper.history = count++;
+    return debounceDecoratorNew.call(this, ...rest);
+  }
+  return wrapper;
 }
