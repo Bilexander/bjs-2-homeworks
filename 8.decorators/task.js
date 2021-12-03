@@ -24,9 +24,25 @@ function cachingDecoratorNew(func) {
   return wrapper;
 }
 
+// Задача 2
+function debounceDecoratorNew(func, ms) {
+  let timeout;
+  let repeatCall = false;
 
-function debounceDecoratorNew(func) {
-  // Ваш код
+  function wrapper(...rest) {
+
+    if (!repeatCall) {
+      func.apply(this, ...rest);
+      repeatCall = true;
+      return;
+    }
+    clearTimeout(timeout)
+    timeout = setTimeout(() => {
+      repeatCall = false
+      func.apply(this, ...rest)
+    }, ms)
+  }
+  return wrapper;
 }
 
 function debounceDecorator2(func) {
